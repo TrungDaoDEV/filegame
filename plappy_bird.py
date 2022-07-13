@@ -60,7 +60,7 @@ pygame.init()
 screen=pygame.display.set_mode((432,768))
 
 
-game_font = pygame.font.Font('D:/LAP_TRINH/PYTHON/Hoc/FileGame/04B_19.TTF',30)
+game_font = pygame.font.Font('D:/IT/Python/Game/filegame/04B_19.TTF',30)
 # tạo biến
 clock = pygame.time.Clock()
 gravity = 0.2
@@ -69,16 +69,16 @@ bird_movement = 0
 score = 0
 high_score = 0
 # chèn bg
-bg=pygame.image.load('D:/LAP_TRINH/PYTHON/Hoc/FileGame/assets/background-night.png').convert()
+bg=pygame.image.load('D:/IT/Python/Game/filegame/assets/background-night.png').convert()
 bg=pygame.transform.scale2x(bg)
 # chèn sàn
-floor=pygame.image.load('D:/LAP_TRINH/PYTHON/Hoc/FileGame/assets/floor.png').convert()
+floor=pygame.image.load('D:/IT/Python/Game/filegame/assets/floor.png').convert()
 floor=pygame.transform.scale2x(floor)
 floor_x_pos=0
 # tạo chim
-bird_down = pygame.image.load('D:/LAP_TRINH/PYTHON/Hoc/FileGame/assets/yellowbird-downflap.png').convert_alpha()
-bird_mid = pygame.image.load('D:/LAP_TRINH/PYTHON/Hoc/FileGame/assets/yellowbird-midflap.png').convert_alpha()
-bird_up = pygame.image.load('D:/LAP_TRINH/PYTHON/Hoc/FileGame/assets/yellowbird-upflap.png').convert_alpha()
+bird_down = pygame.image.load('D:/IT/Python/Game/filegame/assets/yellowbird-downflap.png').convert_alpha()
+bird_mid = pygame.image.load('D:/IT/Python/Game/filegame/assets/yellowbird-midflap.png').convert_alpha()
+bird_up = pygame.image.load('D:/IT/Python/Game/filegame/assets/yellowbird-upflap.png').convert_alpha()
 bird_list=[bird_down,bird_mid,bird_up]
 bird_index = 2
 bird = bird_list[bird_index]
@@ -89,7 +89,7 @@ bird_rect=bird.get_rect(center=(100,384))
 bird_flap = pygame.USEREVENT+1
 pygame.time.set_timer(bird_flap,200)
 # tạo ống
-pipe_surface = pygame.image.load('D:/LAP_TRINH/PYTHON/Hoc/FileGame/assets/pipe-green.png').convert()
+pipe_surface = pygame.image.load('D:/IT/Python/Game/filegame/assets/pipe-green.png').convert()
 pipe_surface=pygame.transform.scale2x(pipe_surface)
 pipe_list=[]
 pipe_height = [300,400,500]
@@ -97,12 +97,12 @@ pipe_height = [300,400,500]
 spawnpipe = pygame.USEREVENT
 pygame.time.set_timer(spawnpipe,1000)
 # Tạo màn hình kết thúc
-game_over_surface = pygame.image.load('D:/LAP_TRINH/PYTHON/Hoc/FileGame/assets/message.png').convert_alpha()
+game_over_surface = pygame.image.load('D:/IT/Python/Game/filegame/assets/message.png').convert_alpha()
 game_over_rect = game_over_surface.get_rect(center=(432/2,768/2))
 # chèn âm thanh
-flap_sound = pygame.mixer.Sound('D:/LAP_TRINH/PYTHON/Hoc/FileGame/sound/sfx_wing.wav')
-hit_sound = pygame.mixer.Sound('D:/LAP_TRINH/PYTHON/Hoc/FileGame/sound/sfx_hit.wav')
-score_sound = pygame.mixer.Sound('D:/LAP_TRINH/PYTHON/Hoc/FileGame/sound/sfx_point.wav')
+flap_sound = pygame.mixer.Sound('D:/IT/Python/Game/filegame/sound/sfx_wing.wav')
+hit_sound = pygame.mixer.Sound('D:/IT/Python/Game/filegame/sound/sfx_hit.wav')
+score_sound = pygame.mixer.Sound('D:/IT/Python/Game/filegame/sound/sfx_point.wav')
 score_sound_countdown = 100
 
 while True:
@@ -110,12 +110,12 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_SPACE and game_active:
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.type == pygame.MOUSEBUTTONDOWN and game_active:
                 bird_movement = 0
                 bird_movement = -5
                 flap_sound.play()
-            if event.key == pygame.K_SPACE and game_active==False:
+            if event.type == pygame.MOUSEBUTTONDOWN and game_active==False:
                 game_active=True
                 pipe_list.clear()
                 bird_rect.center = (100,384)
